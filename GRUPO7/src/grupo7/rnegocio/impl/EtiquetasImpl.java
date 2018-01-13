@@ -17,9 +17,25 @@ public class EtiquetasImpl implements IEtiquetas {
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, etiquetas.getId_e()));
         lisParametros.add(new Parametro(2, etiquetas.getNombre()));
-        lisParametros.add(new Parametro(3, etiquetas.getCreado()));
-        lisParametros.add(new Parametro(4, etiquetas.getActualizado()));
-      
+        if(etiquetas.getCreado()instanceof java.util.Date)
+        {
+            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) etiquetas.getCreado()).getTime())));
+        }
+        else
+        
+        {
+            lisParametros.add(new Parametro(3, etiquetas.getCreado()));
+        }
+        
+         if(etiquetas.getActualizado()instanceof java.util.Date)
+        {
+            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) etiquetas.getActualizado()).getTime())));
+        }
+        else
+        
+        {
+            lisParametros.add(new Parametro(4, etiquetas.getActualizado()));
+        }
         Conexion con = null;
         try {
             con=new Conexion();

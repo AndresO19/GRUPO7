@@ -7,10 +7,10 @@ import java.util.Date;
 public class Conexion {
 
     Scanner entrada = new Scanner(System.in);
-    String driver = "org.postgresql.Driver";
-    String url = "jdbc:postgresql://172.30.3.76:5432/Academico";
-    String usuario = "jhon";
-    String conraseña = "jhon1";
+    String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    String url = "jdbc:sqlserver://192.168.1.104:1433;databaseName=tutoriales";
+    String usuario = "michu";
+    String conraseña = "123";
     Connection conexion = null;
 
     public void conectar() {

@@ -26,7 +26,7 @@ public class Usuariotest {
         
         int filas=0;
         
-        Roles rol=new Roles(1, "enero", new java.util.Date(), new java.util.Date());
+        Roles rol=new Roles(1, "Michu", new java.util.Date(), new java.util.Date());
         Usuarios us=new Usuarios(1, "Daniel", "ao@gmail.com", "1295", rol, new java.util.Date(), new java.util.Date());
         
            try {

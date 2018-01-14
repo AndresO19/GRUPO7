@@ -7,7 +7,7 @@ package grupo7.rnegocio.entidades;
 
 import java.util.*;
 public class Publicaciones {
-   private int id_e;
+   private int id_p;
     private Usuarios usuarios;
     private Niveles niveles;
     private String titulo;
@@ -21,8 +21,8 @@ public class Publicaciones {
     public Publicaciones() {
     }
 
-    public Publicaciones(int id_e, Usuarios usuarios, Niveles niveles, String titulo, String contenido, int publicado, int vistas, Double votos, Date creado, Date actualizado) {
-        this.id_e = id_e;
+    public Publicaciones(int id_p, Usuarios usuarios, Niveles niveles, String titulo, String contenido, int publicado, int vistas, Double votos, Date creado, Date actualizado) {
+        this.id_p = id_p;
         this.usuarios = usuarios;
         this.niveles = niveles;
         this.titulo = titulo;
@@ -34,12 +34,12 @@ public class Publicaciones {
         this.actualizado = actualizado;
     }
 
-    public int getId_e() {
-        return id_e;
+    public int getId_p() {
+        return id_p;
     }
 
-    public void setId_e(int id_e) {
-        this.id_e = id_e;
+    public void setId_p(int id_p) {
+        this.id_p = id_p;
     }
 
     public Usuarios getUsuarios() {
@@ -112,5 +112,9 @@ public class Publicaciones {
 
     public void setActualizado(Date actualizado) {
         this.actualizado = actualizado;
-    } 
+    }
+
+    
+
+   
 }

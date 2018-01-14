@@ -9,6 +9,6 @@ public interface IPublicaciones {
    public int insertar (Publicaciones publicaciones) throws Exception;
     public int modificar (Publicaciones publicaciones) throws Exception;
     public int eliminar (Publicaciones publicaciones) throws Exception;
-    public Publicaciones obtener(String codigo) throws Exception;
+    public Publicaciones obtener(int codigo) throws Exception;
     public ArrayList<Publicaciones> obtener () throws Exception; 
 }

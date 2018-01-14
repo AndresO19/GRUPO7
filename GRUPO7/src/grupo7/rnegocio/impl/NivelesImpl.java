@@ -98,7 +98,7 @@ public class NivelesImpl implements INiveles {
     }
 
     @Override
-    public Niveles obtener(String codigo) throws Exception {
+    public Niveles obtener(int codigo) throws Exception {
         Niveles nNivel = null;
         String sqlC="SELECT id_n, nombre, creado, actualizado, FROM Niveles";
         ArrayList<Parametro> lisParametros=new ArrayList<>();

@@ -9,6 +9,6 @@ public interface INiveles {
     public int insertar (Niveles niveles) throws Exception;
     public int modificar (Niveles niveles) throws Exception;
     public int eliminar (Niveles niveles) throws Exception;
-    public Niveles obtener(String codigo) throws Exception;
+    public Niveles obtener(int  codigo) throws Exception;
     public ArrayList<Niveles> obtener () throws Exception;
 }

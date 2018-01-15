@@ -100,7 +100,7 @@ public class NivelesImpl implements INiveles {
     @Override
     public Niveles obtener(int codigo) throws Exception {
         Niveles nNivel = null;
-        String sqlC="SELECT id_n, nombre, creado, actualizado, FROM Niveles";
+        String sqlC="SELECT id_n, nombre, creado, actualizado  FROM Niveles where id_n=?";
         ArrayList<Parametro> lisParametros=new ArrayList<>();
         lisParametros.add(new Parametro(1, codigo));
         Conexion con=null;
@@ -109,6 +109,7 @@ public class NivelesImpl implements INiveles {
             con.conectar();
             ResultSet rst=con.ejecutarQuery(sqlC, lisParametros);
             while (rst.next()){
+                nNivel = new Niveles();
                 nNivel.setId_n(rst.getInt(1));
                 nNivel.setNombre(rst.getString(2));
                 nNivel.setCreado(rst.getDate(3));

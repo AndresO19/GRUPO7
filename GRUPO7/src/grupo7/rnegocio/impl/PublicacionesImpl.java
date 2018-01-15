@@ -24,12 +24,12 @@ public class PublicacionesImpl implements IPublicaciones {
         pb.add(new Parametro(7, publicaciones.getVistas()));
         pb.add(new Parametro(8, publicaciones.getVotos()));
         if (publicaciones.getCreado() instanceof java.util.Date) {
-            pb.add(new Parametro(9, new java.sql.Date(((java.sql.Date) publicaciones.getCreado()).getTime())));
+            pb.add(new Parametro(9, new java.sql.Date(((java.util.Date) publicaciones.getCreado()).getTime())));
         } else {
             pb.add(new Parametro(9, publicaciones.getActualizado()));
         }
         if (publicaciones.getCreado() instanceof java.util.Date) {
-            pb.add(new Parametro(10, new java.sql.Date(((java.sql.Date) publicaciones.getActualizado()).getTime())));
+            pb.add(new Parametro(10, new java.sql.Date(((java.util.Date) publicaciones.getActualizado()).getTime())));
         } else {
             pb.add(new Parametro(10, publicaciones.getActualizado()));
         }

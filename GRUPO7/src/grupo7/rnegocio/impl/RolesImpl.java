@@ -100,7 +100,7 @@ public class RolesImpl implements IRoles {
     @Override
     public Roles obtener(int codigo) throws Exception {
         Roles nRol = null;
-        String sqlC="SELECT id_r, nombre, creado, actualizado, FROM Roles";
+        String sqlC="SELECT id_r, nombre, creado, actualizado FROM roles where id_r=?";
         ArrayList<Parametro> lisParametros=new ArrayList<>();
         lisParametros.add(new Parametro(1, codigo));
         Conexion con=null;
@@ -109,6 +109,7 @@ public class RolesImpl implements IRoles {
             con.conectar();
             ResultSet rst=con.ejecutarQuery(sqlC, lisParametros);
             while (rst.next()){
+                nRol = new Roles();
                 nRol.setId_r(rst.getInt(1));
                 nRol.setNombre(rst.getString(2));
                 nRol.setCreado(rst.getDate(3));

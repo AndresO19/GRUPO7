@@ -12,7 +12,7 @@ public class UsuariosImpl implements IUsuarios {
     @Override
     public int insertar(Usuarios usuarios) throws Exception {
         int numFilas = 0;
-        String sqlC = "INSERT INTO usuarios (id_u, nombre, email, pasword, id_r, creado, actualizado) VALUES (?,?,?,?,?,?,?,?)";
+        String sqlC = "insert into usuarios (id_u, nombre, email, pasword, id_r, creado, actualizado) VALUES (?,?,?,?,?,?,?)";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, usuarios.getId_u()));
         lisParametros.add(new Parametro(2, usuarios.getNombre()));
@@ -20,12 +20,12 @@ public class UsuariosImpl implements IUsuarios {
         lisParametros.add(new Parametro(4, usuarios.getPasword()));
         lisParametros.add(new Parametro(5, usuarios.getRoles()));
         if (usuarios.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(6, new java.sql.Date(((java.sql.Date) usuarios.getCreado()).getTime())));
+            lisParametros.add(new Parametro(6, new java.sql.Date(((java.util.Date) usuarios.getCreado()).getTime())));
         } else {
-            lisParametros.add(new Parametro(6, usuarios.getActualizado()));
+            lisParametros.add(new Parametro(6, usuarios.getCreado()));
         }
         if (usuarios.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(7, new java.sql.Date(((java.sql.Date) usuarios.getActualizado()).getTime())));
+            lisParametros.add(new Parametro(7, new java.sql.Date(((java.util.Date) usuarios.getActualizado()).getTime())));
         } else {
             lisParametros.add(new Parametro(7, usuarios.getActualizado()));
         }
@@ -56,8 +56,17 @@ public class UsuariosImpl implements IUsuarios {
         lisParametros.add(new Parametro(3, usuarios.getEmail()));
         lisParametros.add(new Parametro(4, usuarios.getPasword()));
         lisParametros.add(new Parametro(5, usuarios.getRoles()));
-        lisParametros.add(new Parametro(6, usuarios.getCreado()));
-        lisParametros.add(new Parametro(7, usuarios.getActualizado()));
+        if (usuarios.getCreado() instanceof java.util.Date) {
+            lisParametros.add(new Parametro(6, new java.sql.Date(((java.util.Date) usuarios.getCreado()).getTime())));
+        } else {
+            lisParametros.add(new Parametro(6, usuarios.getCreado()));
+        }
+        if (usuarios.getCreado() instanceof java.util.Date) {
+            lisParametros.add(new Parametro(7, new java.sql.Date(((java.util.Date) usuarios.getActualizado()).getTime())));
+        } else {
+            lisParametros.add(new Parametro(7, usuarios.getActualizado()));
+        }
+        
         Conexion con=null;
         try {
             con=new Conexion();

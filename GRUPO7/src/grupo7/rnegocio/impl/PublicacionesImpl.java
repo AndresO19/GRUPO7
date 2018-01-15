@@ -121,13 +121,13 @@ public class PublicacionesImpl implements IPublicaciones {
             INiveles niveldao = new NivelesImpl();
             ResultSet rst = con.ejecutarQuery(csql, pubs);
             while (rst.next()) {
-                us = new Usuarios();               
-                nv = new Niveles();                
+                us = new Usuarios();
+                nv = new Niveles();
                 npb = new Publicaciones();
                 npb.setId_p(rst.getInt(1));
                 us = usuariodao.obtener(rst.getInt(2));
                 npb.setUsuarios(us);
-                nv = niveldao.obtener(rst.getInt(3));  
+                nv = niveldao.obtener(rst.getInt(3));
                 npb.setNiveles(nv);
                 npb.setTitulo(rst.getString(4));
                 npb.setContenido(rst.getString(5));
@@ -151,25 +151,27 @@ public class PublicacionesImpl implements IPublicaciones {
 
     @Override
     public ArrayList<Publicaciones> obtener() throws Exception {
-        ArrayList<Publicaciones> pulb = new ArrayList<>();
-        Usuarios us = null;
-        IUsuarios usuariodao = new UsuariosImpl();
-        Niveles nv = null;
-        INiveles niveldao = new NivelesImpl();
+        Publicaciones pub = null;
         String csql = "select id_p, id_u, id_n, titulo, contenido, publicado, vistas, votos, creado, actualizado from publicaciones";
+        ArrayList<Publicaciones> pulb = new ArrayList<>();
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
             ResultSet rst = con.ejecutarQuery(csql, null);
-            Publicaciones pub = null;
             while (rst.next()) {
-                us = new Usuarios();
-                us = usuariodao.obtener(rst.getInt(2));
-                nv = new Niveles();
-                nv = niveldao.obtener(rst.getInt(3));
+                Usuarios us = null;
+                IUsuarios usuariodao = new UsuariosImpl();
+                Niveles nv = null;
+                INiveles niveldao = new NivelesImpl();
+                us = new Usuarios();               
+                nv = new Niveles();               
                 pub = new Publicaciones();
                 pub.setId_p(rst.getInt(1));
+                us = usuariodao.obtener(rst.getInt(2));
+                pub.setUsuarios(us);
+                nv = niveldao.obtener(rst.getInt(3));
+                pub.setNiveles(nv);
                 pub.setTitulo(rst.getString(4));
                 pub.setContenido(rst.getString(5));
                 pub.setPublicado(rst.getInt(6));

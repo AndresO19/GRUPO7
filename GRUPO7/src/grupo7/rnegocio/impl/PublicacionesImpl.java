@@ -13,7 +13,7 @@ public class PublicacionesImpl implements IPublicaciones {
 
     public int insertar(Publicaciones publicaciones) throws Exception {
         int filas = 0;
-        String csql = "insert into publicaciones id_p, id_u, id_n, titulo, contenido, publicado, vistas, votos, creado, actualizado values (?,?,?,?,?,?,?,?,?,?)";
+        String csql = "insert into publicaciones (id_p, id_u, id_n, titulo, contenido, publicado, vistas, votos, creado, actualizado) values (?,?,?,?,?,?,?,?,?,?)";
         ArrayList<Parametro> pb = new ArrayList<>();
         pb.add(new Parametro(1, publicaciones.getId_p()));
         pb.add(new Parametro(2, publicaciones.getUsuarios().getId_u()));
@@ -107,10 +107,7 @@ public class PublicacionesImpl implements IPublicaciones {
     @Override
     public Publicaciones obtener(int codigo) throws Exception {
         Publicaciones npb = null;
-        Usuarios us = null;
-        IUsuarios usuariodao = new UsuariosImpl();
-        Niveles nv = null;
-        INiveles niveldao = new NivelesImpl();
+
         String csql = "select id_p, id_u, id_n, titulo, contenido, publicado, vistas, votos, creado, actualizado from publicaciones where id_p=?";
         ArrayList<Parametro> pubs = new ArrayList<>();
         pubs.add(new Parametro(1, codigo));
@@ -118,14 +115,20 @@ public class PublicacionesImpl implements IPublicaciones {
         try {
             con = new Conexion();
             con.conectar();
+            Usuarios us = null;
+            IUsuarios usuariodao = new UsuariosImpl();
+            Niveles nv = null;
+            INiveles niveldao = new NivelesImpl();
             ResultSet rst = con.ejecutarQuery(csql, pubs);
             while (rst.next()) {
-                us = new Usuarios();
-                us = usuariodao.obtener(rst.getInt(2));
-                nv = new Niveles();
-                nv = niveldao.obtener(rst.getInt(3));
+                us = new Usuarios();               
+                nv = new Niveles();                
                 npb = new Publicaciones();
                 npb.setId_p(rst.getInt(1));
+                us = usuariodao.obtener(rst.getInt(2));
+                npb.setUsuarios(us);
+                nv = niveldao.obtener(rst.getInt(3));  
+                npb.setNiveles(nv);
                 npb.setTitulo(rst.getString(4));
                 npb.setContenido(rst.getString(5));
                 npb.setPublicado(rst.getInt(6));
@@ -147,20 +150,20 @@ public class PublicacionesImpl implements IPublicaciones {
     }
 
     @Override
-    public  ArrayList<Publicaciones> obtener() throws Exception{
+    public ArrayList<Publicaciones> obtener() throws Exception {
         ArrayList<Publicaciones> pulb = new ArrayList<>();
         Usuarios us = null;
         IUsuarios usuariodao = new UsuariosImpl();
         Niveles nv = null;
         INiveles niveldao = new NivelesImpl();
-        String csql ="select id_p, id_u, id_n, titulo, contenido, publicado, vistas, votos, creado, actualizado from publicaciones";
+        String csql = "select id_p, id_u, id_n, titulo, contenido, publicado, vistas, votos, creado, actualizado from publicaciones";
         Conexion con = null;
         try {
-            con=new Conexion();
+            con = new Conexion();
             con.conectar();
-            ResultSet rst=con.ejecutarQuery(csql, null);
+            ResultSet rst = con.ejecutarQuery(csql, null);
             Publicaciones pub = null;
-            while(rst.next()){
+            while (rst.next()) {
                 us = new Usuarios();
                 us = usuariodao.obtener(rst.getInt(2));
                 nv = new Niveles();
@@ -174,26 +177,19 @@ public class PublicacionesImpl implements IPublicaciones {
                 pub.setVotos(rst.getDouble(8));
                 pub.setCreado(rst.getDate(9));
                 pub.setActualizado(rst.getDate(10));
-            
+
                 pulb.add(pub);
-                
-                 }
+
+            }
         } catch (Exception e) {
             throw e;
-        } finally{
-            if(con!=null){
+        } finally {
+            if (con != null) {
                 con.desconectar();
             }
         }
         return pulb;
-                
-            }
-                
+
     }
-    
 
-
-        
-
-
-
+}

@@ -18,7 +18,7 @@ public class UsuariosImpl implements IUsuarios {
         lisParametros.add(new Parametro(2, usuarios.getNombre()));
         lisParametros.add(new Parametro(3, usuarios.getEmail()));
         lisParametros.add(new Parametro(4, usuarios.getPasword()));
-        lisParametros.add(new Parametro(5, usuarios.getRoles()));
+        lisParametros.add(new Parametro(5, usuarios.getRoles().getId_r()));
         if (usuarios.getCreado() instanceof java.util.Date) {
             lisParametros.add(new Parametro(6, new java.sql.Date(((java.util.Date) usuarios.getCreado()).getTime())));
         } else {
@@ -113,6 +113,7 @@ public class UsuariosImpl implements IUsuarios {
         Conexion con = null;
         try {
             con = new Conexion();
+            con.conectar();
             ResultSet rst = con.ejecutarQuery(sqlC, lisParametros);
             while (rst.next()) {
                 rol = new Roles();
@@ -145,18 +146,18 @@ public class UsuariosImpl implements IUsuarios {
             ResultSet rst = con.ejecutarQuery(sqlC, null);
             Roles rol = null;
             IRoles roldao = new RolesImpl();
-            Usuarios user = null;
+            Usuarios users = null;
             while (rst.next()) {
-                rol = new Roles();              
-                user = new Usuarios();
-                user.setId_u(rst.getInt(1));
-                user.setNombre(rst.getString(2));
-                user.setEmail(rst.getString(3));
-                user.setPasword(rst.getString(4));
+                rol = new Roles();    
+                users = new Usuarios();
+                users.setId_u(rst.getInt(1));
+                users.setNombre(rst.getString(2));
+                users.setEmail(rst.getString(3));
+                users.setPasword(rst.getString(4));
                 rol = roldao.obtener(rst.getInt(5));
-                user.setCreado(rst.getDate(6));
-                user.setActualizado(rst.getDate(7));
-                listUsuario.add(user);
+                users.setCreado(rst.getDate(6));
+                users.setActualizado(rst.getDate(7));
+                listUsuario.add(users);
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

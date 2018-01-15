@@ -27,7 +27,7 @@ public class NivelesTest {
             // TEST INSERTAR
 
 //            int filas = 0;
-//            Niveles nivel=new Niveles(2, "Bryan", new java.util.Date(), new java.util.Date());
+//            Niveles nivel=new Niveles(1, "Bryan", new java.util.Date(), new java.util.Date());
 //            try {
 //                filas = nivelesDao.insertar(nivel);
 //                System.out.println("Ingreso de " + filas + " Filas Correctas");
@@ -37,16 +37,16 @@ public class NivelesTest {
 //            assertEquals(filas > 0, true);
 //
 //            //TEST OBTENER POR CODIGO
-//        
+////        
 //        Niveles niveles=new Niveles();
 //        try {
-//            nivel=nivelesDao.obtener("1");
-//            System.out.println("            "+nivel.getId_n()+"    "+nivel.getNombre()+"    "+nivel.getCreado()+"    "+nivel.getActualizado());
+//            niveles=nivelesDao.obtener(1);
+//            System.out.println("            "+niveles.getId_n()+"    "+niveles.getNombre()+"    "+niveles.getCreado()+"    "+niveles.getActualizado());
 //        } catch (Exception e) {
 //        }
-//       *------------------------------------------------------------------------------------------------------------------------------------*
+     //  *------------------------------------------------------------------------------------------------------------------------------------*
         
-////            //TEST LISTADO
+//            //TEST LISTADO
             ArrayList<Niveles> niveless = new ArrayList<>();
             try {
                 niveless = nivelesDao.obtener();

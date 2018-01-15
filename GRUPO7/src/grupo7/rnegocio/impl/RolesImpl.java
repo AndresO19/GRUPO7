@@ -98,7 +98,7 @@ public class RolesImpl implements IRoles {
     }
 
     @Override
-    public Roles obtener(String codigo) throws Exception {
+    public Roles obtener(int codigo) throws Exception {
         Roles nRol = null;
         String sqlC="SELECT id_r, nombre, creado, actualizado, FROM Roles";
         ArrayList<Parametro> lisParametros=new ArrayList<>();

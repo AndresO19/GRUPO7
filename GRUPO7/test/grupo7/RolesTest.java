@@ -29,7 +29,7 @@ public class RolesTest {
             // TEST INSERTAR
 
             int filas = 0;
-            Roles rol=new Roles(1, "Michu", new java.util.Date(), new java.util.Date());
+            Roles rol=new Roles(2, "Michu", new java.util.Date(), new java.util.Date());
             try {
                 filas = rolesDao.insertar(rol);
                 System.out.println("Ingreso de " + filas + " Filas Correctas");
@@ -37,11 +37,11 @@ public class RolesTest {
                 System.out.println("Error: " + e.getMessage());
             }
             assertEquals(filas > 0, true);
-
-            //TEST OBTENER POR CODIGO
+//
+//          ///  TEST OBTENER POR CODIGO
         
             
-        Roles roles=new Roles();
+      //  Roles roles=new Roles();
 //        
 //        try {
 //            rol=rolesDao.obtener("1");

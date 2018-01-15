@@ -1,4 +1,3 @@
-
 package grupo7.rnegocio.impl;
 
 import grupo7.rnegocio.impl.*;
@@ -9,6 +8,7 @@ import java.util.*;
 import java.sql.*;
 
 public class UsuariosImpl implements IUsuarios {
+
     @Override
     public int insertar(Usuarios usuarios) throws Exception {
         int numFilas = 0;
@@ -29,17 +29,16 @@ public class UsuariosImpl implements IUsuarios {
         } else {
             lisParametros.add(new Parametro(7, usuarios.getActualizado()));
         }
-        
-        
+
         Conexion con = null;
         try {
-            con=new Conexion();
+            con = new Conexion();
             con.conectar();
-            numFilas=con.ejecutarComando(sqlC, lisParametros);
+            numFilas = con.ejecutarComando(sqlC, lisParametros);
         } catch (Exception e) {
-            System.out.println("error: "+e.getMessage());
+            System.out.println("error: " + e.getMessage());
         } finally {
-            if(con!=null){
+            if (con != null) {
                 con.desconectar();
             }
         }
@@ -49,8 +48,8 @@ public class UsuariosImpl implements IUsuarios {
     @Override
     public int modificar(Usuarios usuarios) throws Exception {
         int numFilas = 0;
-        String sqlC="UPDATE usuarios SET id_u=?, nombre=?, email=?, pasword=?, id_r=?, creado=?, actualizado=? WHERE id_u=?";
-        ArrayList<Parametro> lisParametros=new ArrayList<>();
+        String sqlC = "UPDATE usuarios SET id_u=?, nombre=?, email=?, pasword=?, id_r=?, creado=?, actualizado=? WHERE id_u=?";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, usuarios.getId_u()));
         lisParametros.add(new Parametro(2, usuarios.getNombre()));
         lisParametros.add(new Parametro(3, usuarios.getEmail()));
@@ -66,14 +65,14 @@ public class UsuariosImpl implements IUsuarios {
         } else {
             lisParametros.add(new Parametro(7, usuarios.getActualizado()));
         }
-        
-        Conexion con=null;
+
+        Conexion con = null;
         try {
-            con=new Conexion();
+            con = new Conexion();
             con.conectar();
-            numFilas=con.ejecutarComando(sqlC, lisParametros);
+            numFilas = con.ejecutarComando(sqlC, lisParametros);
         } catch (Exception e) {
-            System.out.println("Error: "+e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();
@@ -85,16 +84,16 @@ public class UsuariosImpl implements IUsuarios {
     @Override
     public int eliminar(Usuarios usuarios) throws Exception {
         int numFilas = 0;
-        String sqlC="DELETE FROM usuarios WHERE id_u=?";
-        ArrayList<Parametro> lisParametros=new ArrayList<>();
+        String sqlC = "DELETE FROM usuarios WHERE id_u=?";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, usuarios.getId_u()));
-        Conexion con=null;
+        Conexion con = null;
         try {
-            con=new Conexion();
+            con = new Conexion();
             con.conectar();
-            numFilas=con.ejecutarComando(sqlC, lisParametros);
+            numFilas = con.ejecutarComando(sqlC, lisParametros);
         } catch (Exception e) {
-            System.out.println("Error: "+e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();
@@ -106,18 +105,18 @@ public class UsuariosImpl implements IUsuarios {
     @Override
     public Usuarios obtener(int codigo) throws Exception {
         Usuarios nUsuario = null;
-        Roles rol=null;
+        Roles rol = null;
         IRoles roldao = new RolesImpl();
-        String sqlC="SELECT id_u, nombre, email, pasword, id_r, creado, actualizado FROM id_ur";
-        ArrayList<Parametro> lisParametros=new ArrayList<>();
+        String sqlC = "SELECT id_u, nombre, email, pasword, id_r, creado, actualizado FROM id_ur";
+        ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, codigo));
-        Conexion con=null;
+        Conexion con = null;
         try {
-            con=new Conexion();
-            ResultSet rst=con.ejecutarQuery(sqlC, lisParametros);
-            while (rst.next()){
+            con = new Conexion();
+            ResultSet rst = con.ejecutarQuery(sqlC, lisParametros);
+            while (rst.next()) {
                 rol = new Roles();
-                rol = roldao.obtener(rst.getString(5)); 
+                rol = roldao.obtener(rst.getInt(5));
                 nUsuario.setId_u(rst.getInt(1));
                 nUsuario.setNombre(rst.getString(2));
                 nUsuario.setEmail(rst.getString(3));
@@ -126,7 +125,7 @@ public class UsuariosImpl implements IUsuarios {
                 nUsuario.setActualizado(rst.getDate(7));
             }
         } catch (Exception e) {
-            System.out.println("Error: "+e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();
@@ -138,28 +137,29 @@ public class UsuariosImpl implements IUsuarios {
     @Override
     public ArrayList<Usuarios> obtener() throws Exception {
         ArrayList<Usuarios> listUsuario = new ArrayList<>();
-        Roles rol=null;
-        IRoles roldao = new RolesImpl();
-        String sqlC="SELECT id_u, nombre, email, pasword, id_r, creado, actualizado FROM usuarios";
-        Conexion con=null;
+        String sqlC = "SELECT id_u, nombre, email, pasword, id_r, creado, actualizado FROM usuarios";
+        Conexion con = null;
         try {
-            con=new Conexion();
-            ResultSet rst=con.ejecutarQuery(sqlC, null);
-            Usuarios user=null;
-            while (rst.next()){
-                rol = new Roles();
-                rol = roldao.obtener(rst.getString(5)); 
+            con = new Conexion();
+            con.conectar();
+            ResultSet rst = con.ejecutarQuery(sqlC, null);
+            Roles rol = null;
+            IRoles roldao = new RolesImpl();
+            Usuarios user = null;
+            while (rst.next()) {
+                rol = new Roles();              
                 user = new Usuarios();
                 user.setId_u(rst.getInt(1));
                 user.setNombre(rst.getString(2));
                 user.setEmail(rst.getString(3));
                 user.setPasword(rst.getString(4));
+                rol = roldao.obtener(rst.getInt(5));
                 user.setCreado(rst.getDate(6));
                 user.setActualizado(rst.getDate(7));
                 listUsuario.add(user);
             }
         } catch (Exception e) {
-            System.out.println("Error: "+e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (con != null) {
                 con.desconectar();

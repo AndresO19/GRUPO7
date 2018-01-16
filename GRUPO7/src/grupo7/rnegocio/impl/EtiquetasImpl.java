@@ -97,7 +97,7 @@ public class EtiquetasImpl implements IEtiquetas {
     }
 
     @Override
-    public Etiquetas obtener(String codigo) throws Exception {
+    public Etiquetas obtener(int codigo) throws Exception {
         Etiquetas nEtiqueta = null;
         String sqlC="SELECT id_e, nombre, creado, actualizado, FROM Etiquetas";
         ArrayList<Parametro> lisParametros=new ArrayList<>();

@@ -108,6 +108,7 @@ public class EtiquetasImpl implements IEtiquetas {
             con.conectar();
             ResultSet rst=con.ejecutarQuery(sqlC, lisParametros);
             while (rst.next()){
+                nEtiqueta = new Etiquetas();
                 nEtiqueta.setId_e(rst.getInt(1));
                 nEtiqueta.setNombre(rst.getString(2));
                 nEtiqueta.setCreado(rst.getDate(3));

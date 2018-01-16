@@ -97,7 +97,7 @@ public class EtiquetaspImpl implements IEtiquetas_publicaciones {
     }
 
     @Override
-    public Etiquetas_publicaciones obtener(String codigo) throws Exception {
+    public Etiquetas_publicaciones obtener(int codigo) throws Exception {
         Etiquetas_publicaciones nEtiqueta = null;
         Etiquetas etiquetas=null;
         IEtiquetas etiquetasdao=new EtiquetasImpl();
@@ -114,7 +114,7 @@ public class EtiquetaspImpl implements IEtiquetas_publicaciones {
             while (rst.next()){
                 nEtiqueta.setId_ep(rst.getInt(1));
                 etiquetas = new Etiquetas();
-                etiquetas = etiquetasdao.obtener(rst.getString(2));
+                etiquetas = etiquetasdao.obtener(rst.getInt(2));
                 publicaciones = new Publicaciones();
                 publicaciones = publicacionesdao.obtener(rst.getInt(3));
                 nEtiqueta.setCreado(rst.getDate(4));
@@ -149,7 +149,7 @@ public class EtiquetaspImpl implements IEtiquetas_publicaciones {
                 ep = new Etiquetas_publicaciones();
                 ep.setId_ep(rst.getInt(1));
                 etiquetas = new Etiquetas();
-                etiquetas = etiquetasdao.obtener(rst.getString(2));
+                etiquetas = etiquetasdao.obtener(rst.getInt(2));
                 publicaciones = new Publicaciones();
                 publicaciones = publicacionesdao.obtener(rst.getInt(3));
                 ep.setCreado(rst.getDate(4));

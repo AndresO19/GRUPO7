@@ -27,7 +27,7 @@ public class Usuariotest {
 ////        int filas=0;
 ////        
 ////        Roles rol=new Roles(1, "Michu", new java.util.Date(), new java.util.Date());
-////        Usuarios user=new Usuarios(3, "Daniel", "ao@gmail.com", "1295", rol, new java.util.Date(), new java.util.Date());
+////        Usuarios user=new Usuarios(1, "Michu", "mishell@gmail.com", "12345", rol, new java.util.Date(), new java.util.Date());
 ////        
 ////           try {
 ////            filas=usDao.insertar(user);

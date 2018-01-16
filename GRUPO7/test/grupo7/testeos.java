@@ -35,23 +35,23 @@ public class testeos {
 
             //TEST OBTENER POR CODIGO
 //        
-//        Etiquetas etiqueta=new Etiquetas();
-//        try {
-//            etiqueta=etiquetasDao.obtener("1");
-//            System.out.println("            "+etiqueta.getId_e()+"    "+etiqueta.getNombre()+"    "+etiqueta.getCreado()+"    "+etiqueta.getActualizado());
-//        } catch (Exception e) {
-//        }
+        Etiquetas etiqueta=new Etiquetas();
+        try {
+            etiqueta=etiquetasDao.obtener(1);
+            System.out.println("            "+etiqueta.getId_e()+"    "+etiqueta.getNombre()+"    "+etiqueta.getCreado()+"    "+etiqueta.getActualizado());
+        } catch (Exception e) {
+        }
 //        //*------------------------------------------------------------------------------------------------------------------------------------*
 ////        
 //            //TEST LISTADO
-            ArrayList<Etiquetas> etiquetass = new ArrayList<>();
-            try {
-                etiquetass = etiquetasDao.obtener();
-                for (Etiquetas etiquetat : etiquetass) {
-                    System.out.println(etiquetat.getId_e() + " " + etiquetat.getNombre() + " " + etiquetat.getCreado() + " " + etiquetat.getActualizado());
-                }
-            } catch (Exception e) {
-            }
-            assertEquals(etiquetass!= null, true);
+//            ArrayList<Etiquetas> etiquetass = new ArrayList<>();
+//            try {
+//                etiquetass = etiquetasDao.obtener();
+//                for (Etiquetas etiquetat : etiquetass) {
+//                    System.out.println(etiquetat.getId_e() + " " + etiquetat.getNombre() + " " + etiquetat.getCreado() + " " + etiquetat.getActualizado());
+//                }
+//            } catch (Exception e) {
+//            }
+//            assertEquals(etiquetass!= null, true);
     }
 }

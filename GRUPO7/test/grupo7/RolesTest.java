@@ -29,7 +29,7 @@ public class RolesTest {
         // TEST INSERTAR
 ////
 ////            int filas = 0;
-////            Roles rol=new Roles(3, "Michu", new java.util.Date(), new java.util.Date());
+////            Roles rol=new Roles(1, "Michu", new java.util.Date(), new java.util.Date());
 ////            try {
 ////                filas = rolesDao.insertar(rol);
 ////                System.out.println("Ingreso de " + filas + " Filas Correctas");
@@ -44,7 +44,7 @@ public class RolesTest {
         Roles roless=new Roles();
         
         try {
-            roless=rolesDao.obtener(3);
+            roless=rolesDao.obtener(1);
             System.out.println("            "+roless.getId_r()+"    "+roless.getNombre()+"    "+roless.getCreado()+"    "+roless.getActualizado());
         } catch (Exception e) {
         }

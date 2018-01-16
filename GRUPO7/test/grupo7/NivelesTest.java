@@ -27,7 +27,7 @@ public class NivelesTest {
             // TEST INSERTAR
 
 //            int filas = 0;
-//            Niveles nivel=new Niveles(1, "Bryan", new java.util.Date(), new java.util.Date());
+//            Niveles nivel=new Niveles(1, "Michu", new java.util.Date(), new java.util.Date());
 //            try {
 //                filas = nivelesDao.insertar(nivel);
 //                System.out.println("Ingreso de " + filas + " Filas Correctas");

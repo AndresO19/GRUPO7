@@ -99,7 +99,7 @@ public class EtiquetasImpl implements IEtiquetas {
     @Override
     public Etiquetas obtener(int codigo) throws Exception {
         Etiquetas nEtiqueta = null;
-        String sqlC="SELECT id_e, nombre, creado, actualizado, FROM Etiquetas where id_e=?";
+        String sqlC="SELECT id_e, nombre, creado, actualizado FROM Etiquetas where id_e=?";
         ArrayList<Parametro> lisParametros=new ArrayList<>();
         lisParametros.add(new Parametro(1, codigo));
         Conexion con=null;

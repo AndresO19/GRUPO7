@@ -24,7 +24,7 @@ public class testeos {
 //            // TEST INSERTAR
 //
 //            int filas = 0;
-//            Etiquetas etiqueta=new Etiquetas(8, "Mishell", new java.util.Date(), new java.util.Date());
+//            Etiquetas etiqueta=new Etiquetas(1, "Mishell", new java.util.Date(), new java.util.Date());
 //            try {
 //                filas = etiquetasDao.insertar(etiqueta);
 //                System.out.println("Ingreso de " + filas + " Filas Correctas");

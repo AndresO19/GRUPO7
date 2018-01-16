@@ -115,8 +115,10 @@ public class EtiquetaspImpl implements IEtiquetas_publicaciones {
                 nEtiqueta.setId_ep(rst.getInt(1));
                 etiquetas = new Etiquetas();
                 etiquetas = etiquetasdao.obtener(rst.getInt(2));
+                nEtiqueta.setEtiquetas(etiquetas);
                 publicaciones = new Publicaciones();
                 publicaciones = publicacionesdao.obtener(rst.getInt(3));
+                nEtiqueta.setPublicaciones(publicaciones);
                 nEtiqueta.setCreado(rst.getDate(4));
                 nEtiqueta.setActualizado(rst.getDate(5));
               
@@ -150,8 +152,10 @@ public class EtiquetaspImpl implements IEtiquetas_publicaciones {
                 ep.setId_ep(rst.getInt(1));
                 etiquetas = new Etiquetas();
                 etiquetas = etiquetasdao.obtener(rst.getInt(2));
+                ep.setEtiquetas(etiquetas);
                 publicaciones = new Publicaciones();
                 publicaciones = publicacionesdao.obtener(rst.getInt(3));
+                ep.setPublicaciones(publicaciones);
                 ep.setCreado(rst.getDate(4));
                 ep.setActualizado(rst.getDate(5));
               

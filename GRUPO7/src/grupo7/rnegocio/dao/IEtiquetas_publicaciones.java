@@ -9,6 +9,6 @@ public interface IEtiquetas_publicaciones {
    public int insertar (Etiquetas_publicaciones ep) throws Exception;
     public int modificar (Etiquetas_publicaciones ep) throws Exception;
     public int eliminar (Etiquetas_publicaciones ep) throws Exception;
-    public Etiquetas_publicaciones obtener(String codigo) throws Exception;
+    public Etiquetas_publicaciones obtener(int codigo) throws Exception;
     public ArrayList<Etiquetas_publicaciones> obtener () throws Exception; 
 }

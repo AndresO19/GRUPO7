@@ -18,12 +18,14 @@ public class Etiquetas_ptest {
         ///////////INSERTAR TEST
 //        int filas = 0;
 //
-//       
+        Roles ro = new Roles(2, "Mayra", new java.util.Date(), new java.util.Date());
+        Niveles nive = new Niveles(2, "Saul", new java.util.Date(), new java.util.Date());
+        Usuarios usua = new Usuarios(4, "Pedro", "peter@gmail.com", "12456", ro, new java.util.Date(), new java.util.Date());
 //      
-//        Publicaciones publi = new Publicaciones(1, usua, nive, "casa", "ropa", 1, 1, 1.5, new java.util.Date(), new java.util.Date());
-//        Etiquetas eti = new Etiquetas(1, "Juan", new java.util.Date(), new java.util.Date());
-//        Etiquetas_publicaciones etipubli = new Etiquetas_publicaciones(1, eti, publi, new java.util.Date(), new java.util.Date());
-//
+        Publicaciones publi = new Publicaciones(1, usua, nive, "casa", "ropa", 1, 1, 1.5, new java.util.Date(), new java.util.Date());
+        Etiquetas eti = new Etiquetas(1, "Juan", new java.util.Date(), new java.util.Date());
+        Etiquetas_publicaciones etipubli = new Etiquetas_publicaciones(1, eti, publi, new java.util.Date(), new java.util.Date());
+
 //        try {
 //            filas = epDao.insertar(etipubli);
 //            System.out.println("Filas insertadas: " + filas);
@@ -31,7 +33,6 @@ public class Etiquetas_ptest {
 //            System.out.println("Error: " + e.getMessage());
 //        }
 //        assertEquals(filas > 0, true);
-
         ////LISTAR POR CODIGO TEST
 //      Etiquetas_publicaciones epu = new Etiquetas_publicaciones();
 //     try {
@@ -55,6 +56,5 @@ public class Etiquetas_ptest {
 //            System.out.println("error: " + e.getMessage());
 //        }
 //        assertEquals(etipu != null, true);
-
     }
 }
